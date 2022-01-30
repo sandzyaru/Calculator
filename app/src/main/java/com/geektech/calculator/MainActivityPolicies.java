@@ -17,11 +17,14 @@ public class MainActivityPolicies extends AppCompatActivity {
             ((TextView) findViewById(R.id.result_policies)).setText(text);
         }
         findViewById(R.id.btn_delete).setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivityPolicies.this,MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                    | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
+            Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+            homeIntent.addCategory( Intent.CATEGORY_HOME );
+            homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(homeIntent);
+            System.exit(1);
+
+
         });
     }
+
 }
