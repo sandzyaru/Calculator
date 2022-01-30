@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvResult;
@@ -176,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                 }
-                tvResult.setText(result.toString());
+                tvResult.setText(new DecimalFormat("##.#######").format(result));
                 break;
         }
     }
