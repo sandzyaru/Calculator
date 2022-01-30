@@ -2,6 +2,7 @@ package com.geektech.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,22 +13,37 @@ import com.google.android.material.button.MaterialButton;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvResult;
-    private Integer firstVar;
-    private Integer secondVar;
+    private Double firstVar;
+    private Double secondVar;
     private Boolean isOperationClick;
     private String operation;
-    private MaterialButton btnNegativaAndPositiveNumber;
+    private MaterialButton btnNotAnInteger;
+    private MaterialButton btnEqual;
+    private MaterialButton btnInvisible;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        findViewById(R.id.btn_invisible).setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this,MainActivityPolicies.class);
+            startActivity(intent);
+        });
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tvResult = findViewById(R.id.tv_result);
+        btnEqual=findViewById(R.id.btn_equal);
+        btnInvisible=findViewById(R.id.btn_invisible);
+        btnEqual.setOnClickListener(view -> {
+            btnInvisible.animate().alpha(1);
+        });
     }
 
     public void onNumberClick(View view) {
         switch (view.getId()){
+            case R.id.btn_null:
+                setNumber("0");
+                break;
             case R.id.btn_one:
                 setNumber("1");
                 break;
@@ -57,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_clear:
                 tvResult.setText("0");
-                firstVar = 0;
-                secondVar = 0;
+                firstVar = 0.0;
+                secondVar = 0.0;
                 break;
 
 
@@ -66,9 +82,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setNumber(String number){
+        btnNotAnInteger=findViewById(R.id.btn_not_an_integer);
+        btnNotAnInteger.setOnClickListener(view -> {
+            if(tvResult.getText().toString().equals("0")){
+                tvResult.append(".");
+            } else {
+                tvResult.append(".");
+            }
+        });
         if (tvResult.getText().toString().equals("0")){
             tvResult.setText(number);
-        }else if (isOperationClick){
+        }
+            else if (isOperationClick){
             tvResult.setText(number);
 
         }
@@ -82,34 +107,34 @@ public class MainActivity extends AppCompatActivity {
     public void onOperationClick(View view) {
         switch (view.getId()){
             case R.id.btn_negative_and_positive_number:
-                firstVar = Integer.parseInt(tvResult.getText().toString());
+                firstVar = Double.parseDouble(tvResult.getText().toString());
                 operation = "+/-";
                 isOperationClick = true;
                 break;
             case R.id.btn_plus:
-                firstVar = Integer.parseInt(tvResult.getText().toString());
+                firstVar = Double.parseDouble(tvResult.getText().toString());
                 isOperationClick = true;
                 operation = "+";
                 break;
             case R.id.btn_minus:
-                firstVar = Integer.parseInt(tvResult.getText().toString());
+                firstVar = Double.parseDouble(tvResult.getText().toString());
                 operation = "-";
                 isOperationClick = true;
                 break;
             case R.id.btn_division:
-                firstVar = Integer.parseInt(tvResult.getText().toString());
+                firstVar = Double.parseDouble(tvResult.getText().toString());
                 operation = "/";
                 isOperationClick = true;
                 break;
             case R.id.btn_multiplication:
-                firstVar = Integer.parseInt(tvResult.getText().toString());
+                firstVar = Double.parseDouble(tvResult.getText().toString());
                 operation = "*";
                 isOperationClick = true;
                 break;
 
             case R.id.btn_equal:
-                secondVar = Integer.parseInt(tvResult.getText().toString());
-                Integer result = 0;
+                secondVar = Double.parseDouble(tvResult.getText().toString());
+                Double result = 0.0;
                 switch (operation){
                     case "+/-":
                         result = firstVar+secondVar;

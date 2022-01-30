@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Sanjar/AndroidStudioProjects/Calculator/app/src/main/res/drawable/ic_menu.xml" value="0.1" />
+        <entry key="..\:/Users/Sanjar/AndroidStudioProjects/Calculator/app/src/main/res/drawable/textview_cornerc.xml" value="0.144" />
         <entry key="..\:/Users/Sanjar/AndroidStudioProjects/Calculator/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Sanjar/AndroidStudioProjects/Calculator/app/src/main/res/layout/activity_main_policies.xml" value="0.2" />
       </map>
     </option>
   </component>
