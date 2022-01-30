@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     android:background="@color/dark_white"
     tools:context=".MainActivityPolicies">
+    <TextView
+        android:layout_marginBottom="20dp"
+        android:id="@+id/result_policies"
+        android:textSize="20sp"
+        android:text="Current Polocies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/lite_red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></TextView>
 
     <TextView
         android:id="@+id/bar"
@@ -37,7 +47,7 @@
         android:id="@+id/policies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="80dp"
         android:text="Policies"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
